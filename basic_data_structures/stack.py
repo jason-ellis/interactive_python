@@ -48,7 +48,7 @@ class Stack:
     def __init__(self):
         self.items = []
 
-    def isEmpty(self):
+    def is_empty(self):
         return self.items == []
 
     def push(self, item):
@@ -66,13 +66,13 @@ class Stack:
 # Create stack and call methods
 s = Stack()
 
-print(s.isEmpty())
+print(s.is_empty())
 s.push(4)
 s.push('dog')
 print(s.peek())
 s.push(True)
 print(s.size())
-print(s.isEmpty())
+print(s.is_empty())
 s.push(8.4)
 print(s.pop())
 print(s.pop())

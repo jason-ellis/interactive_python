@@ -1,4 +1,6 @@
 # http://interactivepython.org/runestone/static/pythonds/BasicDS/WhatIsaDeque.html
+# http://interactivepython.org/runestone/static/pythonds/BasicDS/ImplementingaDequeinPython.html
+# http://interactivepython.org/runestone/static/pythonds/BasicDS/PalindromeChecker.html
 
 
 # What is a Deque?

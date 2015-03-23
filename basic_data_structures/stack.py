@@ -31,7 +31,7 @@
 #   returns top item from stack, doesn't remove it. no parameters, stack is
 #   not modified
 
-# isEmpty()
+# is_empty()
 #   tests to see if the stack is empty. No parameters, returns boolean
 
 # size()

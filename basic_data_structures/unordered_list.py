@@ -57,6 +57,7 @@
 # Implementation of choice for ADT is a new class
 # Linked List consists of a Head that points to first item (node) in the list
 # Each item (node) contains data and reference to next item
+# Implementation uses assumptions stated above regarding item existence
 
 class Node:
     def __init__(self, init_data):
@@ -125,16 +126,62 @@ class UnorderedList:
             previous.set_next(current.get_next())
 
     def append(self, item):
-        pass
+        current = self.head
+        previous = None
+        while current != None:
+            previous = current
+            current = current.get_next()
+
+        temp = Node(item)
+        previous.set_next(temp)
 
     def insert(self, pos, item):
-        pass
+        if pos == 0:
+            self.add(item)
+        else:
+            current = self.head
+            previous = None
+            count = 0
+            while count != pos:
+                count = count + 1
+                previous = current
+                current = current.get_next()
+
+            temp = Node(item)
+            previous.set_next(temp)
+            temp.set_next(current.get_next())
 
     def index(self, item):
-        pass
+        current = self.head
+        count = 0
+        while current.get_data() != item:
+            count = count + 1
+            current = current.get_next()
+
+        return count
 
     def pop(self, pos=None):
-        pass
+        current = self.head
+        previous = None
+        count = 0
+
+        if pos == None:
+            while current != None:
+                count = count + 1
+                previous = current
+                current = current.get_next()
+            previous.set_next(None)
+            return previous.get_data()
+        elif pos == 0:
+            self.head = current.get_next()
+        else:
+            while count != pos:
+                count = count + 1
+                previous = current
+                current = current.get_next()
+
+            previous.set_next(current.get_next())
+        return current.get_data()
 
 # Create linked list and call methods
 my_list = UnorderedList()
@@ -150,7 +197,16 @@ my_list.add(54)
 
 print("List is empty?", my_list.is_empty())
 print("List size:", my_list.size())
-print("Search for 17:", my_list.search(17))
+print("Search for 17:", my_list.search(17), my_list.index(17))
 print("Remove 17")
 my_list.remove(17)
 print("Search for 17:", my_list.search(17))
+print("Append 12")
+my_list.append(12)
+print("Search for 12:", my_list.search(12), my_list.index(12))
+my_list.insert(0, 14)
+print("Insert 14 at 0:", my_list.search(14), my_list.index(14))
+my_list.insert(1, 15)
+print("Insert 15 at 1:", my_list.search(15), my_list.index(15))
+print("Popping last (12):", my_list.pop())
+print("Popping first (14)", my_list.pop(0))

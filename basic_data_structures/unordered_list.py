@@ -166,12 +166,12 @@ class UnorderedList:
         count = 0
 
         if pos == None:
-            while current != None:
+            while current.get_next() != None:
                 count = count + 1
                 previous = current
                 current = current.get_next()
             previous.set_next(None)
-            return previous.get_data()
+            return current.get_data()
         elif pos == 0:
             self.head = current.get_next()
         else:
@@ -209,4 +209,5 @@ print("Insert 14 at 0:", my_list.search(14), my_list.index(14))
 my_list.insert(1, 15)
 print("Insert 15 at 1:", my_list.search(15), my_list.index(15))
 print("Popping last (12):", my_list.pop())
+print("Search for 12:", my_list.search(12))
 print("Popping first (14)", my_list.pop(0))
